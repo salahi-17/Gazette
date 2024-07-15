@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>IT career switch HTML application</title>
+        <meta charset="utf-8">
 
+
+    </head>
+
+    <body>
+        <table>
+          <thead>
+            <tr id="head">
+                <th>API Name</th>
+                <th>API Description</th>
+                <th>Click Submit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="apiName">Weather</td>
+                <td class="apiDescription">Returns a list of weather stations with the most recent weather 
+                    observation</td>
+                <td class="wrap"><button class="button" id="weatherBtn">Submit</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="apiName">Earthquakes</td>
+                <td class="apiDescription">Returns a list of earthquakes, ordered by magnitude
+                </td>
+                <td class="wrap">
+                    <button class="button" id="earthquakeBtn">Submit</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="apiName">Street name lookup</td>
+                <td class="apiDescription">Returns a list of street names starting with the query term.
+                </td>
+                <td class="wrap">
+                    <button class="button" id="streetNameLookupBtn">Submit</button>
+                </td>
+            </tr>
+          </tbody>  
+        </table>
+        <script src="libs/js/jquery-2.2.3.min.js"></script>
+        <script src="libs/js/script.js"></script>
+
+    </body>
+</html>
