@@ -8,6 +8,7 @@
     </head>
 
     <body>
+        <div id="preloader"></div>
         <table>
           <thead>
             <tr id="head">
