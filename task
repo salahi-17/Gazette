@@ -4,7 +4,7 @@
         <title>IT career switch HTML application</title>
         <meta charset="utf-8">
 
-
+        <link href="libs/css/style.css" rel="stylesheet" />
     </head>
 
     <body>
