@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Table</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h2>API Information</h2>
+
+<table>
+    <tr>
+        <th>API Name</th>
+        <th>API Description</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>Country Code</td>
+        <td>
+			<p>Returns country code for specific latitude and longitude</p>
+			<label for="lat">Latitude:</label>
+			<input type="text" id="lat" name="lat" placeholder="e.g., 40.571"><br>
+			<label for="lng">Longitude:</label>
+			<input type="text" id="lng" name="lng" placeholder="e.g., 10.184">
+		</td>
+        <td>
+			<button class="button" id="btnRun1">Submit</button>
+		</td>
+    </tr>
+    <tr>
+        <td>Children</td>
+        <td>
+			<p>Returns the children (admin divisions and populated places) for a given geonameId.</p>
+			<label for="geonameId">Geoname ID:</label>
+			<input type="text" id="geonameId" name="geonameId" placeholder="e.g., 3175395">
+		</td>
+        <td>
+			<button class="button" id="btnRun2">Submit</button>
+		</td>
+    </tr>
+    <tr>
+        <td>Weather</td>
+        <td>
+			<p>Returns wearther observation</p>
+			<label for="north">North</label>
+			<input type="text" id="north" name="north" placeholder="e.g., 55.5"><br>
+			<label for="south">South</label>
+			<input type="text" id="south" name="south" placeholder="e.g., 92.4"><br>
+			<label for="east">East</label>
+			<input type="text" id="east" name="east" placeholder="e.g., 97.1"><br>
+			<label for="west">West</label>
+			<input type="text" id="west" name="west" placeholder="e.g., 10.3">
+		</td>
+        <td>
+			<button class="button" id="btnRun3">Submit</button>
+		</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+			<div id="result"></div>
+		</td>
+    </tr>
+</table>
+
+<script src="libs/js/jquery-2.2.3.min.js"></script>
+<script src="libs/js/script.js"></script>
+
+</body>
+</html>
