@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Table</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h2>API Information</h2>
+
+<table>
+    <tr>
+        <th>API Name</th>
+        <th>API Description</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>Country Code</td>
+        <td>
+			<p>Returns country code for specific latitude and longitude</p>
+			<label for="latitude">Latitude:</label>
+			<input type="text" id="selLatitude" name="latitude" placeholder="e.g., 40.571"><br>
+			<label for="longitude">Longitude:</label>
+			<input type="text" id="selLongitude" name="longitude" placeholder="e.g., 10.184"><br><br>
+            Country Name:<output type="text" id="txtCountryName" name="countryName"></output>
+		</td>
+        <td>
+			<button class="button" id="btnRun1">Submit</button>
+		</td>
+    </tr>
+    <tr>
+        <td>Children</td>
+        <td>
+			<p>Returns the children (admin divisions and populated places) for a given geonameId.</p>
+			<label for="geonameId">Geoname ID:</label>
+			<input type="text" id="selGeonameId" name="geonameId" placeholder="e.g., 3175395"><br><br>
+            Population:<output type="text" id="txtPopulation" name="population"></output>
+		</td>
+        <td>
+			<button class="button" id="btnRun2">Submit</button>
+		</td>
+    </tr>
+    <tr>
+        <td>Weather</td>
+        <td>
+			<p>Returns wearther observation</p>
+			<label for="north">North</label>
+			<input type="text" id="selNorth" name="north" placeholder="e.g., 55.5"><br>
+			<label for="south">South</label>
+			<input type="text" id="selSouth" name="south" placeholder="e.g., 92.4"><br>
+			<label for="east">East</label>
+			<input type="text" id="selEast" name="east" placeholder="e.g., 97.1"><br>
+			<label for="west">West</label>
+			<input type="text" id="selWest" name="west" placeholder="e.g., 10.3"><br><br>
+            Station Name:<output type="text" id="txtStationName" name="stationname"></output>
+		</td>
+        <td>
+			<button class="button" id="btnRun3">Submit</button>
+		</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+			<div id="result"></div>
+		</td>
+    </tr>
+</table>
+
+<script src="libs/js/jquery-2.2.3.min.js"></script>
+<script src="libs/js/script.js"></script>
+
+</body>
+</html>
