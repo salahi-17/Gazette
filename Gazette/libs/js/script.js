@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     zoomControl: true,
   });
 
-  L.marker([51.505, -0.09], { icon: airportIcon }).addTo(map).bindPopup("Test Airport");
+ 
 
 
   // Add OpenStreetMap tiles
@@ -165,10 +165,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const airportIcon = L.ExtraMarkers.icon({
     icon: "fa-plane",       
     prefix: "fa",           
-    markerColor: "purple",  
+    markerColor: "white",  
     shape: "circle",        
-    iconColor: "black",     
-    extraClasses: "fa-5x",  
+    iconColor: "white",     
   });
   
   L.marker([51.505, -0.09], { icon: airportIcon })
