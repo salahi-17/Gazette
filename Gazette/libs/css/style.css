@@ -23,3 +23,22 @@ html, body {
     width: 200px;
     margin: 0 auto;
   }
+
+  #infoButton {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 90px; /* Space below zoom buttons */
+  }
+  
+  #infoButton i {
+    font-size: 18px;
+    color: #333;
+  }
+  

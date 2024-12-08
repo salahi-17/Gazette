@@ -148,6 +148,15 @@ document.addEventListener("DOMContentLoaded", function () {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
+
+  const satelliteMap = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {
+      attribution: "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+    }
+  );
+
+  
   // Create MarkerClusterGroup for airports
   const airports = L.markerClusterGroup({
     showCoverageOnHover: true,
@@ -175,9 +184,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .bindPopup("Test Airport");
 
   
+  // const baseMaps = {
+  //   "Street Map": streetMap,
+  // };
   const baseMaps = {
     "Street Map": streetMap,
+    "Satellite Map": satelliteMap,
   };
+  
 
   const overlayMaps = {
     Airports: airports,
@@ -185,9 +199,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
   L.control.layers(baseMaps, overlayMaps).addTo(map);
 
+  let countryBorderLayer; // Placeholder for the border layer
+
+  // Function to highlight the country's border by name
+  async function highlightCountryBordersByName(selectedCountryName) {
+    // Fetch the GeoJSON file
+    const response = await fetch("./countries.geo.json"); // Update the path
+    const geoData = await response.json();
+
+    // Find the country's feature in the GeoJSON by name
+    const countryFeature = geoData.features.find(
+      (feature) => feature.properties.name.toLowerCase() === selectedCountryName.toLowerCase()
+    );
+
+    if (!countryFeature) {
+      console.error("Country not found in GeoJSON.");
+      return;
+    }
+
+    // Remove the existing layer if it exists
+    if (countryBorderLayer) {
+      map.removeLayer(countryBorderLayer);
+    }
+
+    // Add the country's border to the map
+    countryBorderLayer = L.geoJSON(countryFeature, {
+      style: {
+        color: "purple",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.3,
+      },
+    }).addTo(map);
+
+    // Fit the map to the country's bounds
+    map.fitBounds(countryBorderLayer.getBounds());
+  }
+
+
   // Add country change dropdown functionality
+  // document.getElementById("countrySelect").addEventListener("click", function () {
   document.getElementById("countrySelect").addEventListener("change", function () {
     const selectedCountryName = this.options[this.selectedIndex].text;
+    highlightCountryBordersByName(selectedCountryName);
+
 
     // Fetch the GeoJSON file
     fetch("./airports_plain.geojson")
@@ -235,4 +290,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   airports.addTo(map);
+
+  function showCountryInfo(countryName) {
+    const infoModal = new bootstrap.Modal(document.getElementById("infoModal"));
+  
+    // Get country details
+    const country = countryData[countryName];
+    if (!country) {
+      alert("Country details not found.");
+      return;
+    }
+  
+    // Update modal content dynamically
+    document.querySelector("#infoModal .modal-body").innerHTML = `
+      <p><strong>Continent:</strong> ${country.continent}</p>
+      <p><strong>Capital:</strong> ${country.capital}</p>
+      <p><strong>Languages:</strong> ${country.languages}</p>
+      <p><strong>Population:</strong> ${country.population}</p>
+      <p><strong>Area:</strong> ${country.area}</p>
+    `;
+  
+    // Show the modal
+    infoModal.show();
+  }
+
+  const infoButton = document.getElementById("infoButton");
+  const infoModal = new bootstrap.Modal(document.getElementById("infoModal"));
+
+  // Add click event listener to the info button
+  infoButton.addEventListener("click", () => {
+    infoModal.show(); // Show the modal when the button is clicked
+  });
 });
