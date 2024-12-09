@@ -48,26 +48,24 @@
     </button>
   </div>
 
-  <div id="infoModal" class="modal" tabindex="-1">
+  <div id="infoModal" class="modal fade" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content shadow">
-        <div class="modal-header bg-success bg-gradient text-white">
-          <h5 class="modal-title">Country Info</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-content shadow-lg rounded-4">
+        <div class="modal-header bg-primary text-white border-0 rounded-top">
+          <h5 class="modal-title fw-bold">🌍 Country Information</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <!-- <div class="modal-body">
-          <p><strong>Continent:</strong> AS</p>
-          <p><strong>Capital:</strong> Hanoi</p>
-          <p><strong>Languages:</strong> vi, en, fr, zh, km</p>
-          <p><strong>Population:</strong> 95,540,395</p>
-          <p><strong>Area:</strong> 329,560 km²</p>
-        </div> -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="modal-body bg-light text-dark p-4">
+          <!-- Dynamically injected content -->
+        </div>
+        <div class="modal-footer bg-secondary bg-gradient text-white border-0 d-flex justify-content-between">
+          <small>Powered by Geonames API</small>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
+  
   <span id="selectContainer">
       <select id="countrySelect" class="form-select shadow-sm">
         <option value="AF">Afghanistan</option>

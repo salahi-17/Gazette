@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to highlight the country's border by name
   async function highlightCountryBordersByName(selectedCountryName) {
     // Fetch the GeoJSON file
-    const response = await fetch("./countries.geo.json"); // Update the path
+    const response = await fetch("./libs/php/countryBorders.geo.json"); // Update the path
     const geoData = await response.json();
 
     // Find the country's feature in the GeoJSON by name
@@ -291,34 +291,96 @@ document.addEventListener("DOMContentLoaded", function () {
 
   airports.addTo(map);
 
-  function showCountryInfo(countryName) {
-    const infoModal = new bootstrap.Modal(document.getElementById("infoModal"));
+  async function showCountryInfoModal(countryName) {
+    const country = await getCountryDetailsByName(countryName);
   
-    // Get country details
-    const country = countryData[countryName];
-    if (!country) {
-      alert("Country details not found.");
-      return;
+    if (country) {
+      document.querySelector("#infoModal .modal-body").innerHTML = `
+        <p><strong>Country:</strong> ${country.country}</p>
+        <p><strong>Capital:</strong> ${country.capital}</p>
+        <p><strong>Population:</strong> ${country.population}</p>
+        <p><strong>Area:</strong> ${country.area} km²</p>
+        <p><strong>Currency:</strong> ${country.currencyName} (${country.currencyCode})</p>
+        <p><strong>Languages:</strong> ${country.languages}</p>
+      `;
+  
+      const infoModal = new bootstrap.Modal(document.getElementById("infoModal"));
+      infoModal.show();
+    } else {
+      alert("Country information not found.");
     }
-  
-    // Update modal content dynamically
-    document.querySelector("#infoModal .modal-body").innerHTML = `
-      <p><strong>Continent:</strong> ${country.continent}</p>
-      <p><strong>Capital:</strong> ${country.capital}</p>
-      <p><strong>Languages:</strong> ${country.languages}</p>
-      <p><strong>Population:</strong> ${country.population}</p>
-      <p><strong>Area:</strong> ${country.area}</p>
-    `;
-  
-    // Show the modal
-    infoModal.show();
   }
 
   const infoButton = document.getElementById("infoButton");
   const infoModal = new bootstrap.Modal(document.getElementById("infoModal"));
 
+  async function getCountryDetailsByName(countryName) {
+    const countries = await fetchCountryInfo();
+  
+    // Find the country by name
+    const country = countries.find(
+      (c) => c.country.toLowerCase() === countryName.toLowerCase()
+    );
+  
+    if (country) {
+      console.log(country);
+      return country;
+    } else {
+      console.error("Country not found.");
+      return null;
+    }
+  }
+
+
+  // Fetch and process the country info file
+  async function fetchCountryInfo() {
+    const response = await fetch("libs/php/countryInfo.txt"); 
+    const data = await response.text();
+
+  
+    const lines = data.split("\n");
+
+   
+    const countries = lines
+      .filter((line) => line && !line.startsWith("#"))
+      .map((line) => {
+        const fields = line.split("\t"); // Tab-separated fields
+        return {
+          iso: fields[0]?.trim(),
+          iso3: fields[1]?.trim(),
+          country: fields[4]?.trim(),
+          capital: fields[5]?.trim(),
+          area: fields[6]?.trim(),
+          population: fields[7]?.trim(),
+          continent: fields[8]?.trim(),
+          currencyCode: fields[10]?.trim(),
+          currencyName: fields[11]?.trim(),
+          languages: fields[9]?.trim(),
+        };
+      });
+
+    return countries;
+  }
+
+
+
+
+  
   // Add click event listener to the info button
-  infoButton.addEventListener("click", () => {
-    infoModal.show(); // Show the modal when the button is clicked
+  infoButton.addEventListener("click", async () => {
+    
+    const countryDropdown = document.getElementById("countrySelect");
+    const selectedCountryName = countryDropdown.options[countryDropdown.selectedIndex].text;
+
+    
+    if (selectedCountryName) {
+      
+      showCountryInfoModal(selectedCountryName);
+    } else {
+      
+      alert("Please select a country from the dropdown.");
+    }
   });
+  
+
 });
