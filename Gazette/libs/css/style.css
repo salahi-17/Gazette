@@ -47,10 +47,10 @@ html, body {
     background-color: #007bff;
     color: white;
   }
+
   #currencyResult {
     font-weight: bold;
   }
-
 
   #walletButton {
     width: 36px;
@@ -81,10 +81,12 @@ html, body {
   #wikipediaModal .modal-body {
     text-align: left;
   }
+
   #wikiLink {
     color: blue;
     text-decoration: underline;
   }
+
   #wikipediaButton {
     width: 36px;
     height: 36px;
@@ -97,3 +99,15 @@ html, body {
     cursor: pointer;
     margin-top: 235px; /* Space below zoom buttons */
   }
+
+
+
+
+
+
+
+
+
+
+
+
