@@ -65,6 +65,127 @@
       </div>
     </div>
   </div>
+  <!-- Wallet Button on the Map -->
+  <div class="leaflet-top leaflet-left">
+    <button id="walletButton" class="leaflet-control leaflet-bar" title="Currency Converter">
+      <i class="fa fa-wallet"></i>
+    </button>
+  </div>
+
+  <!-- Currency Conversion Modal -->
+  <div id="currencyModal" class="modal fade" tabindex="-1" aria-labelledby="currencyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">💱 Currency Converter</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="currencyFrom" class="form-label">From (USD):</label>
+            <input type="number" id="currencyAmount" class="form-control" value="1">
+          </div>
+          <div class="mb-3">
+            <label for="currencyTo" class="form-label">Convert To:</label>
+            <select id="currencyTo" class="form-select">
+              <option value="ALL">Albanian Lek</option>
+              <option value="EUR">Euro</option>
+              <option value="GBP">British Pound</option>
+              <!-- Add more currencies -->
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Result:</label>
+            <input type="text" id="currencyResult" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="convertCurrency" class="btn btn-success">Convert</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="leaflet-top leaflet-left">
+    <button id="weatherButton" class="leaflet-control leaflet-bar" title="Weather Information">
+      <i class="fa fa-cloud"></i>
+    </button>
+  </div>
+  <!-- Weather Information Modal -->
+  <div id="weatherModal" class="modal fade" tabindex="-1" aria-labelledby="weatherModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">🌤️ Weather Information</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="weatherToday" class="mb-3 text-center">
+            <h6>TODAY</h6>
+            <p id="weatherTodayCondition"></p>
+            <img id="weatherTodayIcon" src="" alt="Weather Icon" class="img-fluid" style="max-width: 80px;">
+            <p><strong id="weatherTodayTemp"></strong></p>
+          </div>
+          <div class="d-flex justify-content-around">
+            <div class="text-center">
+              <h6 id="weatherDay1Date"></h6>
+              <img id="weatherDay1Icon" src="" alt="Weather Icon" class="img-fluid" style="max-width: 50px;">
+              <p id="weatherDay1Temp"></p>
+            </div>
+            <div class="text-center">
+              <h6 id="weatherDay2Date"></h6>
+              <img id="weatherDay2Icon" src="" alt="Weather Icon" class="img-fluid" style="max-width: 50px;">
+              <p id="weatherDay2Temp"></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Wikipedia Button on the Map -->
+  <div class="leaflet-top leaflet-left">
+    <button id="wikipediaButton" class="leaflet-control leaflet-bar" title="Wikipedia Details">
+      <i class="fa fa-w"></i>
+    </button>
+  </div>
+
+  <!-- Wikipedia Details Modal -->
+  <div id="wikipediaModal" class="modal fade" tabindex="-1" aria-labelledby="wikipediaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">📚 Wikipedia Details</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <strong>Summary:</strong>
+            <p id="wikiSummary"></p>
+          </div>
+          <div class="mb-3">
+            <strong>Title:</strong>
+            <p id="wikiTitle"></p>
+          </div>
+          <div class="mb-3">
+            <strong>Wiki URL:</strong>
+            <p><a id="wikiLink" href="#" target="_blank">Visit Wikipedia</a></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
   
   <span id="selectContainer">
       <select id="countrySelect" class="form-select shadow-sm">

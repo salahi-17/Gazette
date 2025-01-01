@@ -34,7 +34,7 @@ html, body {
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 90px; /* Space below zoom buttons */
+    margin-top: 85px; /* Space below zoom buttons */
   }
   
   #infoButton i {
@@ -42,3 +42,58 @@ html, body {
     color: #333;
   }
   
+
+  #currencyModal .modal-header {
+    background-color: #007bff;
+    color: white;
+  }
+  #currencyResult {
+    font-weight: bold;
+  }
+
+
+  #walletButton {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 135px; /* Space below zoom buttons */
+  }
+
+  #weatherButton {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 185px; /* Space below zoom buttons */
+  }
+
+  #wikipediaModal .modal-body {
+    text-align: left;
+  }
+  #wikiLink {
+    color: blue;
+    text-decoration: underline;
+  }
+  #wikipediaButton {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 235px; /* Space below zoom buttons */
+  }
